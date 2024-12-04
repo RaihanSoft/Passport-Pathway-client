@@ -179,7 +179,7 @@ const AddVisa = () => {
           Age Restriction
         </label>
         <input
-          type="text"
+          type="number"
           name="ageRestriction"
           value={visaData.ageRestriction}
           onChange={handleChange}
@@ -193,7 +193,7 @@ const AddVisa = () => {
       <div>
         <label className="block text-sm font-medium text-gray-700">Fee (USD)</label>
         <input
-          type="text"
+          type="number"
           name="fee"
           value={visaData.fee}
           onChange={handleChange}

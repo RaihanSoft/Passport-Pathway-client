@@ -7,6 +7,7 @@ const Navbar = () => {
     const { user, handleLogOut } = useContext(Context);
     const [showWelcome, setShowWelcome] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    console.log(showWelcome)
 
     useEffect(() => {
         if (user && user.email) {
@@ -74,13 +75,13 @@ const Navbar = () => {
     return (
         <header className="sticky top-0 z-50 backdrop-blur-xl bg-white bg-opacity-80 shadow-lg">
             {/* Welcome Message */}
-            {showWelcome && user && user.email && (
+            {/* {showWelcome && user && user.email && (
                 <div className="bg-gray-300 py-2 text-center">
                     <p className="text-sm font-semibold">
                         Welcome, {<span className="text-red-600" >{user.displayName}</span> || "User"} <span className="text-red-500" >!</span>
                     </p>
                 </div>
-            )}
+            )} */}
 
             {/* Navbar */}
             <div className="w-11/12 mx-auto flex items-center justify-between py-2 ">
