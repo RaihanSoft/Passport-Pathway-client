@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
                     <>
                         <Helmet>
                         </Helmet>
-                        <Profile />
+                        <UpdateProfile />
                     </>
                 )
             },
