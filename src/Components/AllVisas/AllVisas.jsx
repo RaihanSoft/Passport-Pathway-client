@@ -7,7 +7,7 @@ const AllVisas = () => {
 
   // Fetch visas from the server
   useEffect(() => {
-    fetch('http://localhost:5000/all-visas') // Updated endpoint
+    fetch('http://localhost:5000/all-visa') // Updated endpoint
       .then((res) => res.json())
       .then((data) => setVisas(data))
       .catch((err) => console.error('Error fetching visas:', err));
