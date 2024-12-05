@@ -74,14 +74,6 @@ const Navbar = () => {
 
     return (
         <header className="sticky top-0 z-50 backdrop-blur-xl bg-white bg-opacity-80 shadow-lg">
-            {/* Welcome Message */}
-            {/* {showWelcome && user && user.email && (
-                <div className="bg-gray-300 py-2 text-center">
-                    <p className="text-sm font-semibold">
-                        Welcome, {<span className="text-red-600" >{user.displayName}</span> || "User"} <span className="text-red-500" >!</span>
-                    </p>
-                </div>
-            )} */}
 
             {/* Navbar */}
             <div className="w-11/12 mx-auto flex items-center justify-between py-2 ">
@@ -99,22 +91,31 @@ const Navbar = () => {
                 {/* Links for larger screens */}
                 <div className="hidden lg:flex flex-1 justify-start">{links}</div>
 
-                <div className="flex items-center justify-center gap-4 " >
+
+
+                <div className="flex items-center justify-center gap-4">
                     {/* User Section */}
-                    <div className="flex items-center  space-x-4">
+
+                    <div className="flex items-center space-x-4">
                         {user && user.email ? (
-                            <div className="flex items-center space-x-4">
+                            <div className="relative group flex items-center space-x-3">
+                                {/* User Photo */}
                                 <img
-                                    className="h-10 w-10 rounded-full"
+                                    className="h-10 w-10 rounded-full cursor-pointer border-2 border-gray-300"
                                     src={user.photoURL}
                                     alt="User"
                                 />
-                                <button
-                                    onClick={handleLogOut}
-                                    className="px-4 py-2 bg-black text-white rounded-md"
-                                >
-                                    Log-Out
-                                </button>
+
+                                {/* Display Name and Logout Button - both visible on hover */}
+                                <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-28 bg-white border border-gray-300 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-2">
+                                    <span className="block text-gray-700 font-medium">{user.displayName}</span>
+                                    <button
+                                        onClick={handleLogOut}
+                                        className="mt-2 px-4 py-1 bg-black text-white rounded-md"
+                                    >
+                                        Log-Out
+                                    </button>
+                                </div>
                             </div>
                         ) : (
                             <NavLink to="/login">
@@ -124,6 +125,16 @@ const Navbar = () => {
                             </NavLink>
                         )}
                     </div>
+
+                    {!user && (
+                        <div>
+                            <NavLink to="/register">
+                                <button className="px-4 py-2 bg-black text-white rounded-md">
+                                    Register
+                                </button>
+                            </NavLink>
+                        </div>
+                    )}
 
                     {/* Hamburger Menu */}
                     <div className="lg:hidden relative">
@@ -149,12 +160,16 @@ const Navbar = () => {
 
                         {/* Dropdown Menu for small screens */}
                         {isMenuOpen && (
-                            <div className="  absolute right-0 mt-2 bg-white border rounded-lg shadow-lg z-10 p-4">
+                            <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg z-10 p-4">
                                 {links}
                             </div>
                         )}
                     </div>
                 </div>
+
+
+
+
 
             </div>
         </header>
