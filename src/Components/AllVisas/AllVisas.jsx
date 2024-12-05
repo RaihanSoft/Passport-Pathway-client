@@ -7,11 +7,12 @@ const AllVisas = () => {
 
   // Fetch visas from the server
   useEffect(() => {
-    fetch('http://localhost:5000/add-visa')
+    fetch('http://localhost:5000/all-visas') // Updated endpoint
       .then((res) => res.json())
       .then((data) => setVisas(data))
       .catch((err) => console.error('Error fetching visas:', err));
   }, []);
+  
 
   // Handle "See Details" button click
   const handleSeeDetails = (id) => {

@@ -6,7 +6,6 @@ import { Context } from '../Provider/Provider'; // Adjust based on your auth set
 const VisaDetails = () => {
   const { id } = useParams();
   const { user, visa, setVisa } = useContext(Context); // Use logged-in user context
-  // const [visa, setVisa] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {

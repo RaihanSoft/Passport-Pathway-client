@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Swal from "sweetalert2"; // Import SweetAlert2
+import { Context } from "../Provider/Provider"; // Assuming you have a context for user authentication
 
 const AddVisa = () => {
+  const { user } = useContext(Context); // Get logged-in user info (email)
   const [visaData, setVisaData] = useState({
     countryImage: "",
     countryName: "",
@@ -21,6 +23,25 @@ const AddVisa = () => {
     "Recent passport-sized photograph",
   ];
 
+  // Fetching visas added by the logged-in user
+  useEffect(() => {
+    const fetchUserVisas = async () => {
+      if (!user?.email) return;
+
+      const response = await fetch(`http://localhost:5000/get-visas?email=${user.email}`);
+      if (response.ok) {
+        const visas = await response.json();
+        console.log("User visas:", visas); // Handle the data (e.g., display in UI)
+      } else {
+        console.error("Failed to fetch visas");
+      }
+    };
+
+    if (user?.email) {
+      fetchUserVisas();
+    }
+  }, [user?.email]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setVisaData({ ...visaData, [name]: value });
@@ -38,14 +59,29 @@ const AddVisa = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!user?.email) {
+      Swal.fire({
+        title: "Error!",
+        text: "User is not logged in.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:5000/add-visa', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(visaData),
+        body: JSON.stringify({
+          ...visaData,
+          userEmail: user.email, // Pass the user's email along with the visa data
+        }),
       });
+
       if (response.ok) {
         Swal.fire({
           title: "Success!",
@@ -183,7 +219,7 @@ const AddVisa = () => {
           name="ageRestriction"
           value={visaData.ageRestriction}
           onChange={handleChange}
-          placeholder="e.g., 18+"
+          placeholder="e.g., 18"
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
@@ -191,13 +227,13 @@ const AddVisa = () => {
 
       {/* Fee */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">Fee (USD)</label>
+        <label className="block text-sm font-medium text-gray-700">Fee</label>
         <input
           type="number"
           name="fee"
           value={visaData.fee}
           onChange={handleChange}
-          placeholder="Enter fee in USD"
+          placeholder="Visa fee in USD"
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
@@ -211,7 +247,7 @@ const AddVisa = () => {
           name="validity"
           value={visaData.validity}
           onChange={handleChange}
-          placeholder="e.g., 6 months"
+          placeholder="e.g., 1 year"
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
@@ -227,7 +263,7 @@ const AddVisa = () => {
           name="applicationMethod"
           value={visaData.applicationMethod}
           onChange={handleChange}
-          placeholder="Online or In-person"
+          placeholder="e.g., online or at the embassy"
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
