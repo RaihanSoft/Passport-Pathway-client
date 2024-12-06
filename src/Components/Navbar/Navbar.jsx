@@ -2,6 +2,7 @@ import logo from "../assets/logo.png";
 import { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../Provider/Provider";
+import DarkModeToggle from "../../DarkMood/DarkMood";
 
 const Navbar = () => {
     const { user, handleLogOut } = useContext(Context);
@@ -90,6 +91,10 @@ const Navbar = () => {
 
                 {/* Links for larger screens */}
                 <div className="hidden lg:flex flex-1 justify-start">{links}</div>
+
+                <div className="pr-5">
+                    {<DarkModeToggle />}
+                </div>
 
 
 
