@@ -9,7 +9,7 @@ const VisaDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/visa-details/${id}`)
+    fetch(`https://assignment-ten-server-iota-tan.vercel.app/visa-details/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log('Fetched visa details:', data); // Log the fetched data
@@ -39,7 +39,7 @@ const VisaDetails = () => {
 
     };
 
-    fetch('http://localhost:5000/apply-visa', {
+    fetch('https://assignment-ten-server-iota-tan.vercel.app/apply-visa', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(application),

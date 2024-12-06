@@ -28,7 +28,7 @@ const AddVisa = () => {
     const fetchUserVisas = async () => {
       if (!user?.email) return;
 
-      const response = await fetch(`http://localhost:5000/get-visas?email=${user.email}`);
+      const response = await fetch(`https://assignment-ten-server-iota-tan.vercel.app/get-visas?email=${user.email}`);
       if (response.ok) {
         const visas = await response.json();
         console.log("User visas:", visas); // Handle the data (e.g., display in UI)
@@ -71,7 +71,7 @@ const AddVisa = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/add-visa', {
+      const response = await fetch('https://assignment-ten-server-iota-tan.vercel.app/add-visa', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

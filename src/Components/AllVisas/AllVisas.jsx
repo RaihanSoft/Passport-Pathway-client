@@ -3,16 +3,37 @@ import { useNavigate } from 'react-router-dom';
 
 const AllVisas = () => {
   const [visas, setVisas] = useState([]);
+  const [filteredVisas, setFilteredVisas] = useState([]);
+  const [visaType, setVisaType] = useState('All'); // State for dropdown filter
   const navigate = useNavigate();
 
   // Fetch visas from the server
   useEffect(() => {
-    fetch('http://localhost:5000/all-visa') // Updated endpoint
+    fetch('https://assignment-ten-server-iota-tan.vercel.app/all-visa')
       .then((res) => res.json())
-      .then((data) => setVisas(data))
+      .then((data) => {
+        console.log(data); // Debug fetched data
+        setVisas(data);
+        setFilteredVisas(data); // Initialize filtered visas
+      })
       .catch((err) => console.error('Error fetching visas:', err));
   }, []);
-  
+
+  // Handle filter functionality
+  const handleVisaTypeChange = (type) => {
+    setVisaType(type);
+
+    // Use a case-insensitive comparison for filtering
+    if (type === 'All') {
+      setFilteredVisas(visas);
+    } else {
+      setFilteredVisas(
+        visas.filter((visa) =>
+          visa.visaType.toLowerCase() === type.toLowerCase()
+        )
+      );
+    }
+  };
 
   // Handle "See Details" button click
   const handleSeeDetails = (id) => {
@@ -22,26 +43,46 @@ const AllVisas = () => {
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold text-center mb-8">All Visas</h1>
+
+      {/* Dropdown Menu for Visa Type Filtering */}
+      <div className="mb-6 flex justify-center">
+        <select
+          value={visaType}
+          onChange={(e) => handleVisaTypeChange(e.target.value)}
+          className="border border-gray-300 rounded-md p-2 text-gray-700"
+        >
+          <option value="All">All Visa Types</option>
+          <option value="Tourist Visa">Tourist Visa</option>
+          <option value="Student Visa">Student Visa</option>
+          <option value="Official Visa">Official Visa</option>
+        </select>
+      </div>
+
+      {/* Visa Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {visas.map((visa) => (
-          <div key={visa._id} className="bg-white shadow-md rounded-lg p-5">
-            <img
-              src={visa.countryImage}
-              alt={visa.countryName}
-              className="w-full h-40 object-cover rounded-md mb-4"
-            />
-            <h2 className="text-xl font-semibold">{visa.countryName}</h2>
-            <p className="text-gray-600">Visa Type: {visa.visaType}</p>
-            <p className="text-gray-600">Fee: ${visa.fee}</p>
-            <p className="text-gray-600">Validity: {visa.validity} months</p>
-            <button
-              onClick={() => handleSeeDetails(visa._id)}
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            >
-              See Details
-            </button>
-          </div>
-        ))}
+        {filteredVisas.length > 0 ? (
+          filteredVisas.map((visa) => (
+            <div key={visa._id} className="bg-white shadow-md rounded-lg p-5">
+              <img
+                src={visa.countryImage}
+                alt={visa.countryName}
+                className="w-full h-40 object-cover rounded-md mb-4"
+              />
+              <h2 className="text-xl font-semibold">{visa.countryName}</h2>
+              <p className="text-gray-600">Visa Type: {visa.visaType}</p>
+              <p className="text-gray-600">Fee: ${visa.fee}</p>
+              <p className="text-gray-600">Validity: {visa.validity} months</p>
+              <button
+                onClick={() => handleSeeDetails(visa._id)}
+                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              >
+                See Details
+              </button>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-500">No visas found.</p>
+        )}
       </div>
     </div>
   );

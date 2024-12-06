@@ -8,7 +8,7 @@ const LatestVisas = () => {
     useEffect(() => {
         const fetchLatestVisas = async () => {
             try {
-                const response = await fetch('http://localhost:5000/all-visas');
+                const response = await fetch('https://assignment-ten-server-iota-tan.vercel.app/all-visas');
                 const data = await response.json();
                 // Sort by the latest added and get the first 6 visas
                 setVisas(data.slice(0, 6));

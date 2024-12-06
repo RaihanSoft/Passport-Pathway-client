@@ -6,19 +6,23 @@ const MyAddedVisas = () => {
   const [visas, setVisas] = useState([]);
   const [editingVisa, setEditingVisa] = useState(null);
 
+
   // Fetch visas for the logged-in user
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/add-visa?email=${user.email}`)
+      fetch(`https://assignment-ten-server-iota-tan.vercel.app/add-visa?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setVisas(data))
         .catch((err) => console.error("Error fetching visas:", err));
+        
     }
   }, [user]);
+  
+  console.log(visas)
 
   // Handle delete action
   const handleDelete = (visaId) => {
-    fetch(`http://localhost:5000/delete-visa/${visaId}`, {
+    fetch(`https://assignment-ten-server-iota-tan.vercel.app/delete-visa/${visaId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -33,7 +37,7 @@ const MyAddedVisas = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/update-visa/${editingVisa._id}`,
+        `https://assignment-ten-server-iota-tan.vercel.app/update-visa/${editingVisa._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

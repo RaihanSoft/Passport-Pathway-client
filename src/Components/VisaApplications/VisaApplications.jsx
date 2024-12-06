@@ -15,7 +15,7 @@ const VisaApplications = () => {
   // Fetch applications for the logged-in user
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/my-visa-applications?email=${user.email}`)
+      fetch(`https://assignment-ten-server-iota-tan.vercel.app/my-visa-applications?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setApplications(data))
         .catch((err) => console.error('Error fetching applications:', err));
@@ -33,7 +33,7 @@ const VisaApplications = () => {
       cancelButtonText: 'No, keep it',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/cancel-application/${id}`, {
+        fetch(`https://assignment-ten-server-iota-tan.vercel.app/cancel-application/${id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
