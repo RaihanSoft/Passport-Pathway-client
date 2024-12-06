@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/visa.png";
 import { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../Provider/Provider";
@@ -17,7 +17,7 @@ const Navbar = () => {
     }, [user]);
 
     const links = (
-        <div className="text-lg flex-col lg:flex-row flex items-center justify-center ml-14 font-medium space-y-2 lg:space-x-8 lg:space-y-0">
+        <div className="text-lg flex-col xl:flex-row flex items-center justify-center ml-14 font-medium space-y-2 lg:space-x-8 lg:space-y-0">
             <NavLink
                 className={({ isActive }) =>
                     isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
@@ -46,7 +46,7 @@ const Navbar = () => {
                 Add Visa
             </NavLink>
 
-            {user && user.email && (
+            {
                 <NavLink
                     className={({ isActive }) =>
                         isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
@@ -58,7 +58,7 @@ const Navbar = () => {
                 </NavLink>
 
 
-            )}
+            }
             <NavLink
                 className={({ isActive }) =>
                     isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
@@ -77,28 +77,25 @@ const Navbar = () => {
         <header className="sticky top-0 z-50 backdrop-blur-xl bg-white bg-opacity-80 shadow-lg">
 
             {/* Navbar */}
-            <div className="w-11/12 mx-auto flex items-center justify-between py-2 ">
+            <div className="w-11/12 mx-auto flex justify-between py-2 ">
                 {/* Logo */}
                 <Link to={'/'}>
                     <div className="flex items-center animate__hinge ">
-                        <img className="w-12 h-12 mr-2" src={logo} alt="Logo" />
-                        <div>
-                            <h2 className="text-red-500 font-bold text-xl">Visa</h2>
-                            <h2 className="text-blue-500 font-bold text-xl">Navigation</h2>
-                        </div>
+                        <img className="w-full  h-12 " src={logo} alt="Logo" />
                     </div>
                 </Link>
 
                 {/* Links for larger screens */}
-                <div className="hidden lg:flex flex-1 justify-start">{links}</div>
+                <div className="hidden xl:flex flex-1 justify-start">{links}</div>
 
-                <div className="pr-5">
-                    {<DarkModeToggle />}
-                </div>
 
 
 
                 <div className="flex items-center justify-center gap-4">
+                    <div className="pr-5 hidden sm:flex">
+                        {<DarkModeToggle />}
+                    </div>
+
                     {/* User Section */}
 
                     <div className="flex items-center space-x-4">
@@ -116,7 +113,7 @@ const Navbar = () => {
                                     <span className="block text-gray-700 font-medium">{user.displayName}</span>
                                     <button
                                         onClick={handleLogOut}
-                                        className="mt-2 px-4 py-1 bg-black text-white rounded-md"
+                                        className="mt-2 px-2 py-1 bg-black text-white rounded-md"
                                     >
                                         Log-Out
                                     </button>
@@ -124,7 +121,7 @@ const Navbar = () => {
                             </div>
                         ) : (
                             <NavLink to="/login">
-                                <button className="px-4 py-2 bg-black text-white rounded-md">
+                                <button className="px-2 sm:px-4 ml-2 py-2 bg-black text-white rounded-md">
                                     Login
                                 </button>
                             </NavLink>
@@ -134,7 +131,7 @@ const Navbar = () => {
                     {!user && (
                         <div>
                             <NavLink to="/register">
-                                <button className="px-4 py-2 bg-black text-white rounded-md">
+                                <button className="px-2 sm:px-4 py-2 bg-black text-white rounded-md">
                                     Register
                                 </button>
                             </NavLink>
@@ -142,7 +139,7 @@ const Navbar = () => {
                     )}
 
                     {/* Hamburger Menu */}
-                    <div className="lg:hidden relative">
+                    <div className="xl:hidden relative">
                         <button
                             className="text-black focus:outline-none"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -166,7 +163,11 @@ const Navbar = () => {
                         {/* Dropdown Menu for small screens */}
                         {isMenuOpen && (
                             <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg z-10 p-4">
+                                <div className="pr-5 sm:hidden flex">
+                                    {<DarkModeToggle />}
+                                </div>
                                 {links}
+
                             </div>
                         )}
                     </div>

@@ -67,9 +67,11 @@ export const router = createBrowserRouter([
                 path: '/MyAddedVisas',
                 element: (
                     <>
-                        <Helmet>
-                        </Helmet>
-                        <MyAddedVisas/>
+                        <PrivateRoute>
+                            <Helmet>
+                            </Helmet>
+                            <MyAddedVisas />
+                        </PrivateRoute>
                     </>
                 )
             },
