@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../Provider/Provider"; // Replace with your actual provider path
+import Swal from "sweetalert2";
 
 const MyAddedVisas = () => {
   const { user } = useContext(Context); // Get user from context
@@ -14,22 +15,38 @@ const MyAddedVisas = () => {
         .then((res) => res.json())
         .then((data) => setVisas(data))
         .catch((err) => console.error("Error fetching visas:", err));
-        
+
     }
   }, [user]);
-  
+
   console.log(visas)
 
   // Handle delete action
   const handleDelete = (visaId) => {
-    fetch(`https://assignment-ten-server-iota-tan.vercel.app/delete-visa/${visaId}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setVisas(visas.filter((visa) => visa._id !== visaId));
-      })
-      .catch((err) => console.error("Error deleting visa:", err));
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://assignment-ten-server-iota-tan.vercel.app/delete-visa/${visaId}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setVisas(visas.filter((visa) => visa._id !== visaId));
+            Swal.fire('Deleted!', 'The visa has been deleted.', 'success');
+          })
+          .catch((err) => {
+            console.error('Error deleting visa:', err);
+            Swal.fire('Error!', 'Something went wrong while deleting.', 'error');
+          });
+      }
+    });
   };
 
   // Handle update form submission
@@ -52,7 +69,14 @@ const MyAddedVisas = () => {
             visa._id === editingVisa._id ? { ...visa, ...editingVisa } : visa
           )
         );
-        alert("Visa updated successfully!");
+        Swal.fire({
+          icon: 'success',
+          title: 'Visa Updated',
+          text: 'Visa updated successfully!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
+
         setEditingVisa(null);
       } else {
         alert("No changes made or visa not found.");
@@ -64,7 +88,7 @@ const MyAddedVisas = () => {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-8 w-11/12 mx-auto ">
       <h1 className="text-3xl font-bold text-center mb-8">My Added Visas</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {visas.length > 0 ? (
@@ -77,9 +101,10 @@ const MyAddedVisas = () => {
               />
               <h2 className="text-xl font-semibold">{visa.countryName}</h2>
               <p>Visa Type: {visa.visaType}</p>
+              <p>ageRestriction: {visa.ageRestriction} </p>
               <p>Processing Time: {visa.processingTime}</p>
-              <p>Fee: ${visa.fee}</p>
-              <p>Validity: {visa.validity}</p>
+              <p>Fee: ${visa.fee} USD</p>
+              <p>Validity: {visa.validity} months</p>
               <p>Application Method: {visa.applicationMethod}</p>
               <div className="flex justify-between mt-4">
                 <button
@@ -98,7 +123,7 @@ const MyAddedVisas = () => {
             </div>
           ))
         ) : (
-          <p>No visas found for your email address.</p>
+          <p className="text-xl font-bold" >No visas found.</p>
         )}
       </div>
 
@@ -108,7 +133,7 @@ const MyAddedVisas = () => {
           <div className="bg-white p-6 rounded-md">
             <h2 className="text-xl font-bold mb-4">Update Visa</h2>
             <form onSubmit={handleUpdateSubmit}>
-              {["countryName", "visaType", "processingTime", "fee", "validity", "applicationMethod"].map((field) => (
+              {["countryImage", "countryName", "visaType", "processingTime", "ageRestriction",  "fee", "validity", "applicationMethod"].map((field) => (
                 <input
                   key={field}
                   type="text"

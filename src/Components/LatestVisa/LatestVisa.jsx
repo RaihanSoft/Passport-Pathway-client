@@ -68,10 +68,10 @@ const LatestVisas = () => {
                                 <strong>Processing Time:</strong> {visa.processingTime}
                             </p>
                             <p className="">
-                                <strong>Fee:</strong> ${visa.fee}
+                                <strong>Fee:</strong> ${visa.fee} USD
                             </p>
                             <p className="">
-                                <strong>Validity:</strong> {visa.validity}
+                                <strong>Validity:</strong> {visa.validity} months
                             </p>
                             <p className="">
                                 <strong>Application Method:</strong> {visa.applicationMethod}

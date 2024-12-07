@@ -73,7 +73,7 @@ const Navbar = () => {
     );
 
     return (
-        <header className="sticky top-0 z-50 backdrop-blur-xl bg-white bg-opacity-80 shadow-lg">
+        <header className="sticky top-0 z-50 backdrop-blur-xl bg-white bg-opacity-45 shadow-lg">
 
             {/* Navbar */}
             <div className="w-11/12 mx-auto flex justify-between py-2 ">

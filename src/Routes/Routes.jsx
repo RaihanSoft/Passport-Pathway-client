@@ -6,7 +6,6 @@ import Register from '../Register/Register';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import MyAddedVisas from '../Components/MyAddedVisas/MyAddedVisas';
 import ForgotPassword from '../Components/ForgotPassword/ForgotPassword';
-import UpdateProfile from '../Components/UpdateProfile/UpdateProfile ';
 import ErrorPage from '../Components/Error/ErrorPage';
 import { Helmet } from 'react-helmet-async';
 import AddVisa from '../Components/AddVisa/AddVisa';
@@ -83,16 +82,6 @@ export const router = createBrowserRouter([
                         </Helmet>
                         <VisaApplications />
                     </PrivateRoute>
-                )
-            },
-            {
-                path: "/update-profile",
-                element: (
-                    <>
-                        <Helmet>
-                        </Helmet>
-                        <UpdateProfile />
-                    </>
                 )
             },
             {

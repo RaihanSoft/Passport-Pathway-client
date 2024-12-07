@@ -64,7 +64,7 @@ const VisaApplications = () => {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-8 w-11/12 mx-auto ">
       <h1 className="text-3xl font-bold text-center mb-8">My Visa Applications</h1>
 
       {/* Search Bar with luxurious design and animations */}
@@ -99,7 +99,7 @@ const VisaApplications = () => {
               <h2 className="text-xl font-semibold">{app.countryName}</h2>
               <p>Visa Type: {app.visaType}</p>
               <p>Processing Time: {app.processingTime}</p>
-              <p>Fee: ${app.fee}</p>
+              <p>Fee: ${app.fee} USD</p>
               <p>Validity: {app.validity} months</p>
               <p>Application Method: {app.applicationMethod}</p>
               <p>Applied Date: {app.appliedDate}</p>

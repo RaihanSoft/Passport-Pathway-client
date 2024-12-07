@@ -41,7 +41,7 @@ const AllVisas = () => {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-8 w-11/12 mx-auto ">
       <h1 className="text-3xl font-bold text-center mb-8">All Visas</h1>
 
       {/* Dropdown Menu for Visa Type Filtering */}
@@ -73,7 +73,7 @@ const AllVisas = () => {
               />
               <h2 className="text-xl font-semibold text-gray-800">{visa.countryName}</h2>
               <p className="text-gray-600">Visa Type: {visa.visaType}</p>
-              <p className="text-gray-600">Fee: ${visa.fee}</p>
+              <p className="text-gray-600">Fee: ${visa.fee} USD</p>
               <p className="text-gray-600">Validity: {visa.validity} months</p>
               <button
                 onClick={() => handleSeeDetails(visa._id)}
@@ -84,7 +84,7 @@ const AllVisas = () => {
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500">No visas found.</p>
+          <p className="text-center text-gray-500">Loading ....</p>
         )}
       </div>
     </div>
