@@ -9,7 +9,6 @@ const Navbar = () => {
     const [showWelcome, setShowWelcome] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     console.log(showWelcome)
-
     useEffect(() => {
         if (user && user.email) {
             setShowWelcome(true);
