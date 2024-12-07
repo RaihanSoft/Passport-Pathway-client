@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       yellow: {
-        400: "#FFD700", // Luxurious gold
+        'custom-darkGreen': '#006400', 
       },
 
     },
