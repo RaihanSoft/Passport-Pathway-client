@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import { useDarkMode } from "../../DarkMood/DarkMood";
-// import Footer from "../Footer/Footer"
+import Footer from "../Footer/Footer"
 
 const MainLayout = () => {
     const { darkMode } = useDarkMode();
@@ -15,7 +15,7 @@ const MainLayout = () => {
 
 
 
-            {/* <Footer /> */}
+            <Footer />  
 
         </div>
     )
