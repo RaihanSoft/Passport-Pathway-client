@@ -116,7 +116,7 @@ const VisaDetails = () => {
 
           {isModalOpen && (
             <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center" data-aos="fade-up">
-              <div className="bg-white p-8 rounded-lg shadow-2xl max-w-lg w-full">
+              <div className="bg-white text-black p-8 rounded-lg shadow-2xl max-w-lg w-full">
                 <h2 className="text-2xl font-semibold mb-6 text-center text-blue-800">Visa Application</h2>
                 <form onSubmit={handleApply}>
                   <div className="space-y-4">

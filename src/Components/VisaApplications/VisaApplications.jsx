@@ -90,7 +90,7 @@ const VisaApplications = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {filteredApplications.length > 0 ? (
           filteredApplications.map((app) => (
-            <div key={app._id} className="bg-white shadow-md rounded-lg p-5">
+            <div key={app._id} className=" shadow-md rounded-lg p-5">
               <img
                 src={app.countryImage}
                 alt={app.countryName}

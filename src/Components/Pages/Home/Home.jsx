@@ -1,7 +1,9 @@
+
 import Banner from '../../Banner/Banner'
 import BenefitsSection from '../../BenefitsSection/BenefitsSection'
+import FeaturesSection from '../../FeaturesSection/FeaturesSection '
 import LatestVisa from '../../LatestVisa/LatestVisa'
-import Quiz from '../../Quiz/Quiz'
+import Reviews from '../../Reviews/Reviews'
 
 const Home = () => {
   return (
@@ -11,7 +13,8 @@ const Home = () => {
       <Banner />
       <LatestVisa />
       <BenefitsSection />
-      <Quiz />
+      <Reviews />
+      <FeaturesSection />
 
 
 

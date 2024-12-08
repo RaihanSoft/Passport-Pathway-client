@@ -25,6 +25,8 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
+                            <title>Home | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Welcome to Sunflower VISA Navigator, your one-stop solution for all visa-related services!" />
                         </Helmet>
                         <Home />
                     </>
@@ -35,6 +37,8 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
+                            <title>All Visas | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Explore a wide range of visas available for application. Start your visa journey here!" />
                         </Helmet>
                         <AllVisas />
                     </>
@@ -46,6 +50,8 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Helmet>
+                            <title>Visa Details | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Get detailed information about a specific visa. Login required to access visa details." />
                         </Helmet>
                         <VisaDetails />
                     </PrivateRoute>
@@ -57,6 +63,8 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Helmet>
+                            <title>Add Visa | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Add your own visa offerings to the platform securely and easily. Login required." />
                         </Helmet>
                         <AddVisa />
                     </PrivateRoute>
@@ -68,6 +76,8 @@ export const router = createBrowserRouter([
                     <>
                         <PrivateRoute>
                             <Helmet>
+                                <title>My Added Visas | Sunflower VISA Navigator</title>
+                                <meta name="description" content="View and manage visas you have added to the platform. Login required." />
                             </Helmet>
                             <MyAddedVisas />
                         </PrivateRoute>
@@ -79,6 +89,8 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Helmet>
+                            <title>Visa Applications | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Track your visa applications and stay updated on their status. Login required." />
                         </Helmet>
                         <VisaApplications />
                     </PrivateRoute>
@@ -89,6 +101,8 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
+                            <title>Login | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Login to your Sunflower VISA Navigator account to access exclusive features." />
                         </Helmet>
                         <Login />
                     </>
@@ -99,6 +113,8 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
+                            <title>Forgot Password | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Reset your password securely to regain access to your Sunflower VISA Navigator account." />
                         </Helmet>
                         <ForgotPassword />
                     </>
@@ -109,6 +125,8 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
+                            <title>Register | Sunflower VISA Navigator</title>
+                            <meta name="description" content="Create an account with Sunflower VISA Navigator to start your visa journey today!" />
                         </Helmet>
                         <Register />
                     </>
@@ -119,6 +137,14 @@ export const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <ErrorPage />
+        element: (
+            <>
+                <ErrorPage />
+                <Helmet>
+                    <title>404 Not Found | Sunflower VISA Navigator</title>
+                    <meta name="description" content="The page you are looking for does not exist. Return to the homepage." />
+                </Helmet>
+            </>
+        )
     },
 ]);

@@ -93,7 +93,7 @@ const MyAddedVisas = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {visas.length > 0 ? (
           visas.map((visa) => (
-            <div key={visa._id} className="bg-white shadow-md rounded-lg p-5">
+            <div key={visa._id} className=" shadow-md rounded-lg p-5">
               <img
                 src={visa.countryImage}
                 alt={visa.countryName}
@@ -130,7 +130,7 @@ const MyAddedVisas = () => {
       {/* Update Modal */}
       {editingVisa && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-md">
+          <div className="bg-white text-black p-6 rounded-md">
             <h2 className="text-xl font-bold mb-4">Update Visa</h2>
             <form onSubmit={handleUpdateSubmit}>
               {["countryImage", "countryName", "visaType", "processingTime", "ageRestriction",  "fee", "validity", "applicationMethod"].map((field) => (
