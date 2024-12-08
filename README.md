@@ -22,14 +22,3 @@ A streamlined and user-friendly portal to check visa requirements, apply for vis
 - **React Awesome Reveal** for smooth reveal animations.
 - **React-tooltip** for enhanced user guidance.
 
-## How to Use
-1. Visit the [live site](https://your-live-site-url.com).
-2. Check visa requirements by selecting your nationality and travel destination.
-3. Follow the guided process to complete your visa application.
-4. Use your tracking number to monitor your application status.
-
-## Contribution
-Contributions are welcome! If you'd like to contribute, fork the repository and create a pull request.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
