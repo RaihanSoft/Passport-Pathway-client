@@ -16,10 +16,10 @@ const Navbar = () => {
     }, [user]);
 
     const links = (
-        <div className="text-lg flex-col xl:flex-row flex items-center justify-center ml-14 font-medium space-y-2 lg:space-x-8 lg:space-y-0">
+        <div className=" flex-col xl:flex-row flex items-center justify-center ml-14 font-medium space-y-2 lg:space-x-8 lg:space-y-0">
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
+                    isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
                 }
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
@@ -28,7 +28,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
+                    isActive ? "bg-black text-white p-1 px-2rounded-md" : "hover:underline"
                 }
                 to="/AllVisas"
                 onClick={() => setIsMenuOpen(false)}
@@ -37,7 +37,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
+                    isActive ? "bg-black text-white p-1 px-2rounded-md" : "hover:underline"
                 }
                 to="/addVisa"
                 onClick={() => setIsMenuOpen(false)}
@@ -48,7 +48,7 @@ const Navbar = () => {
             {
                 <NavLink
                     className={({ isActive }) =>
-                        isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
+                        isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
                     }
                     to="/MyAddedVisas"
                     onClick={() => setIsMenuOpen(false)}
@@ -60,7 +60,7 @@ const Navbar = () => {
             }
             <NavLink
                 className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-2 rounded-md" : "hover:underline"
+                    isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
                 }
                 to="/visa-applications"
                 onClick={() => setIsMenuOpen(false)}
@@ -73,7 +73,7 @@ const Navbar = () => {
     );
 
     return (
-        <header className="sticky top-0 z-50 backdrop-blur-xl bg-white bg-opacity-45 shadow-lg">
+        <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#008080] shadow-lg">
 
             {/* Navbar */}
             <div className="w-11/12 mx-auto flex justify-between py-2 ">
