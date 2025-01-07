@@ -35,17 +35,22 @@ const Navbar = () => {
             >
                 All visas
             </NavLink>
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-1 px-2rounded-md" : "hover:underline"
-                }
-                to="/addVisa"
-                onClick={() => setIsMenuOpen(false)}
-            >
-                Add Visa
-            </NavLink>
+            {user && (
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive
+                            ? "bg-black text-white p-1 px-2 rounded-md"
+                            : "hover:underline"
+                    }
+                    to="/addVisa"
+                    onClick={() => setIsMenuOpen(false)}
+                >
+                    Add Visa
+                </NavLink>
+            )}
 
             {
+                user &&
                 <NavLink
                     className={({ isActive }) =>
                         isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
@@ -58,15 +63,37 @@ const Navbar = () => {
 
 
             }
-            <NavLink
-                className={({ isActive }) =>
-                    isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
-                }
-                to="/visa-applications"
-                onClick={() => setIsMenuOpen(false)}
-            >
-                My Visa applications
-            </NavLink>
+            {user &&
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
+                    }
+                    to="/visa-applications"
+                    onClick={() => setIsMenuOpen(false)}
+                >
+                    My Visa applications
+                </NavLink>}
+
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
+                    }
+                    to="/about-us"
+                    onClick={() => setIsMenuOpen(false)}
+                >
+                   About Us
+                </NavLink>
+
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? "bg-black text-white p-1 px-2 rounded-md" : "hover:underline"
+                    }
+                    to="/contact-us"
+                    onClick={() => setIsMenuOpen(false)}
+                >
+                    Contact
+                </NavLink>
+
         </div>
 
 

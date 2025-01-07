@@ -12,6 +12,8 @@ import AddVisa from '../Components/AddVisa/AddVisa';
 import AllVisas from '../Components/AllVisas/AllVisas';
 import VisaDetails from '../Components/VisaDetails/VisaDetails';
 import VisaApplications from '../Components/VisaApplications/VisaApplications';
+import AboutUs from '../AboutUs/AboutUs'
+import ContactUs from '../ContactUs/ContactUs';
 
 export const router = createBrowserRouter([
     {
@@ -132,6 +134,14 @@ export const router = createBrowserRouter([
                     </>
                 )
             },
+            {
+                path: "/about-us",
+                element: <AboutUs />
+            },
+            {
+                path: "/contact-us",
+                element: <ContactUs />
+            }
 
         ]
     },

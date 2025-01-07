@@ -33,7 +33,7 @@ const AnimatedSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-11/12 mt-10   sm:rounded-tr-[170px] sm:rounded-bl-[170px]  mx-auto h-[600px] md:h-[550px] overflow-hidden">
+    <div className="relative w-11/12 mt-5 sm:rounded-tr-[170px] sm:rounded-bl-[170px]  mx-auto h-[600px] md:h-[550px] overflow-hidden">
       <div className="w-full h-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white relative">
         {/* Background Image */}
         <div className="absolute inset-0 flex justify-center items-center">
