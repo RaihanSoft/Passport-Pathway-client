@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Home | Sunflower VISA Navigator</title>
+                            <title>Home |  VISA Navigator</title>
                             <meta name="description" content="Welcome to Sunflower VISA Navigator, your one-stop solution for all visa-related services!" />
                         </Helmet>
                         <Home />
@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>All Visas | Sunflower VISA Navigator</title>
+                            <title>All Visas | VISA Navigator</title>
                             <meta name="description" content="Explore a wide range of visas available for application. Start your visa journey here!" />
                         </Helmet>
                         <AllVisas />
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Helmet>
-                            <title>Visa Details | Sunflower VISA Navigator</title>
+                            <title>Visa Details | VISA Navigator</title>
                             <meta name="description" content="Get detailed information about a specific visa. Login required to access visa details." />
                         </Helmet>
                         <VisaDetails />
@@ -65,7 +65,7 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Helmet>
-                            <title>Add Visa | Sunflower VISA Navigator</title>
+                            <title>Add Visa | VISA Navigator</title>
                             <meta name="description" content="Add your own visa offerings to the platform securely and easily. Login required." />
                         </Helmet>
                         <AddVisa />
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
                     <>
                         <PrivateRoute>
                             <Helmet>
-                                <title>My Added Visas | Sunflower VISA Navigator</title>
+                                <title>My Added Visas | VISA Navigator</title>
                                 <meta name="description" content="View and manage visas you have added to the platform. Login required." />
                             </Helmet>
                             <MyAddedVisas />
@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Helmet>
-                            <title>Visa Applications | Sunflower VISA Navigator</title>
+                            <title>Visa Applications | VISA Navigator</title>
                             <meta name="description" content="Track your visa applications and stay updated on their status. Login required." />
                         </Helmet>
                         <VisaApplications />
@@ -103,7 +103,7 @@ export const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Login | Sunflower VISA Navigator</title>
+                            <title>Login | VISA Navigator</title>
                             <meta name="description" content="Login to your Sunflower VISA Navigator account to access exclusive features." />
                         </Helmet>
                         <Login />
